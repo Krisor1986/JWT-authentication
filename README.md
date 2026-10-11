@@ -1,81 +1,73 @@
-# WebApp boilerplate with React JS and Flask API
+# Star Wars Blog — JWT Authentication
 
-Build web applications using React.js for the front end and python/flask for your backend API.
+[English](README.md) · [Español](README.es.md) · [Português](README.pt.md)
 
-- Documentation can be found here: https://4geeks.com/docs/start/react-flask-template
-- Here is a video on [how to use this template](https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b)
-- Integrated with Pipenv for package managing.
-- Fast deployment to Render [in just a few steps here](https://4geeks.com/docs/start/deploy-to-render-com).
-- Use of .env file.
-- SQLAlchemy integration for database abstraction.
+Final 4Geeks Academy authentication exercise, based on the official React + Flask template. It reuses the earlier Star Wars Blog and Star Wars API code in this separate repository.
 
-### 1) Installation:
+## Required flow
 
-> If you use Github Codespaces (recommended) or Gitpod this template will already come with Python, Node and the Posgres Database installed. If you are working locally make sure to install Python 3.10, Node 
+- `/signup`: create a database user with an email and password, then redirect to `/login`.
+- `/login`: validate credentials, store the JWT in `sessionStorage`, then redirect to `/private`.
+- `/private`: validate the token with Flask before displaying the user's favorites. Revalidate every 30 seconds and when the window regains focus. Invalid or expired sessions redirect to `/login`.
+- Navbar logout: remove the session token, clear favorites and redirect to `/login`.
 
-It is recomended to install the backend first, make sure you have Python 3.10, Pipenv and a database engine (Posgress recomended)
+The catalog and detail pages are public. Clicking a favorite star while logged out opens the login page. Favorites belong to the authenticated user and persist in the database. The backend derives the user from the signed JWT; `X-User-ID` cannot select another account. Passwords use Werkzeug hashes and are never returned by the API. Tokens expire after 30 minutes. Logout clears the browser session; this exercise does not implement server-side token revocation.
 
-1. Install the python packages: `$ pipenv install`
-2. Create a .env file based on the .env.example: `$ cp .env.example .env`
-3. Install your database engine and create your database, depending on your database you have to create a DATABASE_URL variable with one of the possible values, make sure you replace the valudes with your database information:
+## Local setup
 
-| Engine    | DATABASE_URL                                        |
-| --------- | --------------------------------------------------- |
-| SQLite    | sqlite:////test.db                                  |
-| MySQL     | mysql://username:password@localhost:port/example    |
-| Postgress | postgres://username:password@localhost:5432/example |
+Use Python 3.13, Pipenv and Node.js 20.19+ or 22.12+. The local project already has dependencies, `.env`, migrations and catalog data configured. The following setup is for a fresh clone; keep your existing `.env` when resuming.
 
-4. Migrate the migrations: `$ pipenv run migrate` (skip if you have not made changes to the models on the `./src/api/models.py`)
-5. Run the migrations: `$ pipenv run upgrade`
-6. Run the application: `$ pipenv run start`
-
-> Note: Codespaces users can connect to psql by typing: `psql -h localhost -U gitpod example`
-
-### Undo a migration
-
-You are also able to undo a migration by running
-
-```sh
-$ pipenv run downgrade
+```bash
+pipenv install
+npm install
+cp .env.example .env
+python3 -c "import secrets; print(secrets.token_hex(32))"
 ```
+Replace `JWT_SECRET_KEY` in `.env` with the random value printed by Python. Do not commit `.env`. SQLite is the local default; no separate database service is needed.
 
-### Backend Populate Table Users
+Start the backend in one terminal:
 
-To insert test users in the database execute the following command:
-
-```sh
-$ flask insert-test-users 5
+```bash
+pipenv run upgrade
+pipenv run flask seed
+pipenv run start
 ```
+Start React in a second terminal:
 
-And you will see the following message:
-
+```bash
+npm run start
 ```
-  Creating test users
-  test_user1@test.com created.
-  test_user2@test.com created.
-  test_user3@test.com created.
-  test_user4@test.com created.
-  test_user5@test.com created.
-  Users created successfully!
+Open [the frontend](http://localhost:3000). Flask runs at `http://127.0.0.1:3001`; `VITE_BACKEND_URL` points there. The seed command is repeatable and imports the same 10 characters, 10 planets and 10 vehicles used in the previous API exercise. Create your own account through `/signup`.
+
+## API
+
+| Method | Endpoint | Authentication |
+| --- | --- | --- |
+| POST | `/api/signup` | Public |
+| POST | `/api/login` | Public |
+| GET | `/api/private` | Bearer JWT |
+| GET | `/api/people`, `/api/planets`, `/api/vehicles` | Public |
+| GET | `/api/<category>/<id>` | Public |
+| GET | `/api/users/favorites` | Bearer JWT |
+| POST / DELETE | `/api/favorite/<category>/<id>` | Bearer JWT |
+
+The category values are `people`, `planets` and `vehicles`. Route IDs are local database IDs; images use the separate `swapi_id`, without assuming those IDs match. Requests to signup and login send JSON with `email` and `password`.
+
+## Validation
+
+```bash
+pipenv run test
+npm run lint
+npm run build
 ```
+Tests exercise authentication, password hashes, invalid and expired tokens, migrations, repeatable imports, and favorites isolation. Integration tests start a real HTTP server with an isolated SQLite database; they do not mock API responses. The running frontend/backend flow was also checked in a browser. All 30 external image URLs returned image responses during verification; external availability can change.
 
-### **Important note for the database and the data inside it**
+## Sources and scope
 
-Every Github codespace environment will have **its own database**, so if you're working with more people eveyone will have a different database and different records inside it. This data **will be lost**, so don't spend too much time manually creating records for testing, instead, you can automate adding records to your database by editing ```commands.py``` file inside ```/src/api``` folder. Edit line 32 function ```insert_test_data``` to insert the data according to your model (use the function ```insert_test_users``` above as an example). Then, all you need to do is run ```pipenv run insert-test-data```.
+- [Authentication assignment](https://github.com/breatheco-de/jwt-authentication-with-flask-react).
+- [Official starter](https://github.com/4GeeksAcademy/react-flask-hello).
+- Reused local exercises: Starwars-blog and Starwars-blog-api; the originals are unchanged.
+- `data/starwars.json` preserves the earlier API's SWAPI.tech snapshot and resolved related names. The frontend reads the local Flask API at runtime, rather than requesting SWAPI.tech directly.
+- Images come from the school's [swapi-images repository](https://github.com/breatheco-de/swapi-images).
 
-### Front-End Manual Installation:
-
--   Make sure you are using node version 20 and that you have already successfully installed and runned the backend.
-
-1. Install the packages: `$ npm install`
-2. Start coding! start the webpack dev server `$ npm run start`
-
-## Publish your website!
-
-This boilerplate it's 100% read to deploy with Render.com and Heroku in a matter of minutes. Please read the [official documentation about it](https://4geeks.com/docs/start/deploy-to-render-com).
-
-### Contributors
-
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
-
-You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
+The inherited unprotected admin panel and public user listing are not registered in this application. This is the authentication exercise, with no additional account recovery or production deployment scope. The backend can serve the React production build after `npm run build`.

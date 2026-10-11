@@ -1,81 +1,73 @@
-# Plantilla de WebApp con React JS y Flask API
+# Star Wars Blog — Autenticación JWT
 
-Construye aplicaciones web usando React.js para el front end y python/flask para tu API backend.
+[English](README.md) · [Español](README.es.md) · [Português](README.pt.md)
 
-- La documentación se puede encontrar aquí: https://4geeks.com/docs/start/react-flask-template
-- Aquí hay un video sobre [cómo usar esta plantilla](https://www.youtube.com/watch?v=qBz6Ddd2m38)
-- Integrado con Pipenv para la gestión de paquetes.
-- Despliegue rápido a Render [en solo unos pocos pasos aquí](https://4geeks.com/es/docs/start/despliega-con-render-com).
-- Uso del archivo .env.
-- Integración de SQLAlchemy para la abstracción de bases de datos.
+Ejercicio final de autenticación de 4Geeks Academy, basado en el template oficial React + Flask. Reutiliza el código del Star Wars Blog y la Star Wars API en este repositorio independiente.
 
-### 1) Instalación:
+## Flujo requerido
 
-> Si usas Github Codespaces (recomendado) o Gitpod, esta plantilla ya vendrá con Python, Node y la base de datos Posgres instalados. Si estás trabajando localmente, asegúrate de instalar Python 3.10, Node.
+- `/signup`: crea un usuario con correo y contraseña y redirige a `/login`.
+- `/login`: valida las credenciales, guarda el JWT en `sessionStorage` y redirige a `/private`.
+- `/private`: valida el token con Flask antes de mostrar los favoritos. Revalida cada 30 segundos y al recuperar el foco de la ventana. Una sesión inválida o caducada redirige a `/login`.
+- Logout en la navbar: elimina el token, limpia los favoritos y redirige a `/login`.
 
-Se recomienda instalar el backend primero, asegúrate de tener Python 3.10, Pipenv y un motor de base de datos (se recomienda Posgres).
+El catálogo y los detalles son públicos. Pulsar una estrella sin iniciar sesión abre el login. Los favoritos pertenecen al usuario autenticado y se guardan en la base de datos. El backend obtiene el usuario del JWT firmado; `X-User-ID` no permite elegir otra cuenta. Las contraseñas se almacenan como hashes de Werkzeug y nunca se devuelven. Los tokens caducan tras 30 minutos. Logout elimina la sesión del navegador; este ejercicio no implementa revocación del token en el servidor.
 
-1. Instala los paquetes de python: `$ pipenv install`
-2. Crea un archivo .env basado en el .env.example: `$ cp .env.example .env`
-3. Instala tu motor de base de datos y crea tu base de datos, dependiendo de tu base de datos, debes crear una variable DATABASE_URL con uno de los valores posibles, asegúrate de reemplazar los valores con la información de tu base de datos:
+## Configuración local
 
-| Motor     | DATABASE_URL                                        |
-| --------- | --------------------------------------------------- |
-| SQLite    | sqlite:////test.db                                  |
-| MySQL     | mysql://username:password@localhost:port/example    |
-| Postgres  | postgres://username:password@localhost:5432/example |
+Usa Python 3.13, Pipenv y Node.js 20.19+ o 22.12+. Este proyecto local ya tiene dependencias, `.env`, migraciones y catálogo configurados. Estos pasos son para un clon nuevo; conserva tu `.env` al continuar.
 
-4. Migra las migraciones: `$ pipenv run migrate` (omite si no has hecho cambios en los modelos en `./src/api/models.py`)
-5. Ejecuta las migraciones: `$ pipenv run upgrade`
-6. Ejecuta la aplicación: `$ pipenv run start`
-
-> Nota: Los usuarios de Codespaces pueden conectarse a psql escribiendo: `psql -h localhost -U gitpod example`
-
-### Deshacer una migración
-
-También puedes deshacer una migración ejecutando
-
-```sh
-$ pipenv run downgrade
+```bash
+pipenv install
+npm install
+cp .env.example .env
+python3 -c "import secrets; print(secrets.token_hex(32))"
 ```
+Sustituye `JWT_SECRET_KEY` en `.env` por el valor aleatorio generado. No subas `.env`. SQLite es la base local predeterminada; no necesita un servicio independiente.
 
-### Población de la tabla de usuarios en el backend
+Backend en un terminal:
 
-Para insertar usuarios de prueba en la base de datos, ejecuta el siguiente comando:
-
-```sh
-$ flask insert-test-users 5
+```bash
+pipenv run upgrade
+pipenv run flask seed
+pipenv run start
 ```
+React en otro terminal:
 
-Y verás el siguiente mensaje:
-
+```bash
+npm run start
 ```
-    Creating test users
-    test_user1@test.com created.
-    test_user2@test.com created.
-    test_user3@test.com created.
-    test_user4@test.com created.
-    test_user5@test.com created.
-    Users created successfully!
+Abre [el frontend](http://localhost:3000). Flask funciona en `http://127.0.0.1:3001`, configurado en `VITE_BACKEND_URL`. El comando seed puede repetirse e importa los mismos 10 personajes, 10 planetas y 10 vehículos del ejercicio anterior. Crea tu cuenta en `/signup`.
+
+## API
+
+| Método | Endpoint | Autenticación |
+| --- | --- | --- |
+| POST | `/api/signup` | Público |
+| POST | `/api/login` | Público |
+| GET | `/api/private` | Bearer JWT |
+| GET | `/api/people`, `/api/planets`, `/api/vehicles` | Público |
+| GET | `/api/<category>/<id>` | Público |
+| GET | `/api/users/favorites` | Bearer JWT |
+| POST / DELETE | `/api/favorite/<category>/<id>` | Bearer JWT |
+
+Las categorías son `people`, `planets` y `vehicles`. Las rutas usan IDs locales del banco; las imágenes usan el `swapi_id` separado, sin asumir que coinciden. Registro y login reciben JSON con `email` y `password`.
+
+## Validación
+
+```bash
+pipenv run test
+npm run lint
+npm run build
 ```
+Las pruebas verifican autenticación, hashes, tokens inválidos y caducados, migraciones, importación repetible y aislamiento de favoritos. La integración utiliza un servidor HTTP real y SQLite aislado, sin simular respuestas. También se verificó el flujo con frontend y backend en el navegador. Las 30 URLs de imágenes externas respondieron con imágenes durante la comprobación; su disponibilidad puede cambiar.
 
-### **Nota importante para la base de datos y los datos dentro de ella**
+## Fuentes y alcance
 
-Cada entorno de Github Codespace tendrá **su propia base de datos**, por lo que si estás trabajando con más personas, cada uno tendrá una base de datos diferente y diferentes registros dentro de ella. Estos datos **se perderán**, así que no pases demasiado tiempo creando registros manualmente para pruebas, en su lugar, puedes automatizar la adición de registros a tu base de datos editando el archivo ```commands.py``` dentro de la carpeta ```/src/api```. Edita la línea 32 de la función ```insert_test_data``` para insertar los datos según tu modelo (usa la función ```insert_test_users``` anterior como ejemplo). Luego, todo lo que necesitas hacer es ejecutar ```pipenv run insert-test-data```.
+- [Enunciado de autenticación](https://github.com/breatheco-de/jwt-authentication-with-flask-react).
+- [Template oficial](https://github.com/4GeeksAcademy/react-flask-hello).
+- Ejercicios reutilizados: Starwars-blog y Starwars-blog-api; los originales siguen intactos.
+- `data/starwars.json` conserva la captura de SWAPI.tech y los nombres relacionados del ejercicio anterior. El frontend consulta la API Flask local, no SWAPI.tech directamente.
+- Las imágenes proceden del [repositorio swapi-images de la escuela](https://github.com/breatheco-de/swapi-images).
 
-### Instalación manual del Front-End:
-
--   Asegúrate de estar usando la versión 20 de node y de que ya hayas instalado y ejecutado correctamente el backend.
-
-1. Instala los paquetes: `$ npm install`
-2. ¡Empieza a codificar! inicia el servidor de desarrollo de webpack `$ npm run start`
-
-## ¡Publica tu sitio web!
-
-Esta plantilla está 100% lista para desplegarse con Render.com y Heroku en cuestión de minutos. Por favor, lee la [documentación oficial al respecto](https://4geeks.com/docs/start/deploy-to-render-com).
-
-### Contribuyentes
-
-Esta plantilla fue construida como parte del [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) de 4Geeks Academy por [Alejandro Sanchez](https://twitter.com/alesanchezr) y muchos otros contribuyentes. Descubre más sobre nuestro [Curso de Desarrollador Full Stack](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer) y [Bootcamp de Ciencia de Datos](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
-
-Puedes encontrar otras plantillas y recursos como este en la [página de github de la escuela](https://github.com/4geeksacademy/).
+No se registran el panel admin sin protección ni la lista pública de usuarios del template. El alcance es la autenticación, sin recuperación de cuentas ni despliegue de producción adicional. El backend puede servir el build de React después de `npm run build`.

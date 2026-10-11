@@ -1,0 +1,10 @@
+body { margin: 0; background: #11151b; color: #f4f6fb; }
+.app-layout { min-height: 100vh; display: flex; flex-direction: column; }
+.auth-card { width: 100%; max-width: 540px; border: 1px solid #e1e6ef; border-radius: 16px; }
+.navbar-brand { font-size: 1.15rem; }
+a { text-underline-offset: 3px; }
+
+.card { background: #1c222b; color: #f4f6fb; border-color: #36404d; }
+.text-secondary, .text-body-secondary { color: #b5becb !important; }
+.form-text { color: #b5becb; }
+.list-group-item { color: #f4f6fb; border-color: #36404d; }

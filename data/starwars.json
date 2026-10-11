@@ -1,0 +1,701 @@
+{
+  "source": "https://www.swapi.tech/api",
+  "downloaded_at": "2026-10-11T22:10:10.976516+00:00",
+  "categories": {
+    "people": [
+      {
+        "swapi_id": "1",
+        "properties": {
+          "created": "2026-10-11T13:51:57.981Z",
+          "edited": "2026-10-11T13:51:57.981Z",
+          "name": "Luke Skywalker",
+          "gender": "male",
+          "skin_color": "fair",
+          "hair_color": "blond",
+          "height": "172",
+          "eye_color": "blue",
+          "mass": "77",
+          "homeworld": "Tatooine",
+          "birth_year": "19BBY",
+          "vehicles": [
+            "Snowspeeder",
+            "Imperial Speeder Bike"
+          ],
+          "starships": [
+            "X-wing",
+            "Imperial shuttle"
+          ],
+          "films": [
+            "A New Hope",
+            "The Empire Strikes Back",
+            "Return of the Jedi",
+            "Revenge of the Sith"
+          ],
+          "url": "Luke Skywalker"
+        },
+        "homeworld_swapi_id": "1"
+      },
+      {
+        "swapi_id": "2",
+        "properties": {
+          "created": "2026-10-11T13:51:57.981Z",
+          "edited": "2026-10-11T13:51:57.981Z",
+          "name": "C-3PO",
+          "gender": "n/a",
+          "skin_color": "gold",
+          "hair_color": "n/a",
+          "height": "167",
+          "eye_color": "yellow",
+          "mass": "75",
+          "homeworld": "Tatooine",
+          "birth_year": "112BBY",
+          "vehicles": [],
+          "starships": [],
+          "films": [
+            "A New Hope",
+            "The Empire Strikes Back",
+            "Return of the Jedi",
+            "The Phantom Menace",
+            "Attack of the Clones",
+            "Revenge of the Sith"
+          ],
+          "url": "C-3PO"
+        },
+        "homeworld_swapi_id": "1"
+      },
+      {
+        "swapi_id": "3",
+        "properties": {
+          "created": "2026-10-11T13:51:57.981Z",
+          "edited": "2026-10-11T13:51:57.981Z",
+          "name": "R2-D2",
+          "gender": "n/a",
+          "skin_color": "white, blue",
+          "hair_color": "n/a",
+          "height": "96",
+          "eye_color": "red",
+          "mass": "32",
+          "homeworld": "Naboo",
+          "birth_year": "33BBY",
+          "vehicles": [],
+          "starships": [],
+          "films": [
+            "A New Hope",
+            "The Empire Strikes Back",
+            "Return of the Jedi",
+            "The Phantom Menace",
+            "Attack of the Clones",
+            "Revenge of the Sith"
+          ],
+          "url": "R2-D2"
+        },
+        "homeworld_swapi_id": "8"
+      },
+      {
+        "swapi_id": "4",
+        "properties": {
+          "created": "2026-10-11T13:51:57.981Z",
+          "edited": "2026-10-11T13:51:57.981Z",
+          "name": "Darth Vader",
+          "gender": "male",
+          "skin_color": "white",
+          "hair_color": "none",
+          "height": "202",
+          "eye_color": "yellow",
+          "mass": "136",
+          "homeworld": "Tatooine",
+          "birth_year": "41.9BBY",
+          "vehicles": [],
+          "starships": [
+            "TIE Advanced x1"
+          ],
+          "films": [
+            "A New Hope",
+            "The Empire Strikes Back",
+            "Return of the Jedi",
+            "Revenge of the Sith"
+          ],
+          "url": "Darth Vader"
+        },
+        "homeworld_swapi_id": "1"
+      },
+      {
+        "swapi_id": "5",
+        "properties": {
+          "created": "2026-10-11T13:51:57.981Z",
+          "edited": "2026-10-11T13:51:57.981Z",
+          "name": "Leia Organa",
+          "gender": "female",
+          "skin_color": "light",
+          "hair_color": "brown",
+          "height": "150",
+          "eye_color": "brown",
+          "mass": "49",
+          "homeworld": "Alderaan",
+          "birth_year": "19BBY",
+          "vehicles": [
+            "Imperial Speeder Bike"
+          ],
+          "starships": [],
+          "films": [
+            "A New Hope",
+            "The Empire Strikes Back",
+            "Return of the Jedi",
+            "Revenge of the Sith"
+          ],
+          "url": "Leia Organa"
+        },
+        "homeworld_swapi_id": "2"
+      },
+      {
+        "swapi_id": "6",
+        "properties": {
+          "created": "2026-10-11T13:51:57.981Z",
+          "edited": "2026-10-11T13:51:57.981Z",
+          "name": "Owen Lars",
+          "gender": "male",
+          "skin_color": "light",
+          "hair_color": "brown, grey",
+          "height": "178",
+          "eye_color": "blue",
+          "mass": "120",
+          "homeworld": "Tatooine",
+          "birth_year": "52BBY",
+          "vehicles": [],
+          "starships": [],
+          "films": [
+            "A New Hope",
+            "Attack of the Clones",
+            "Revenge of the Sith"
+          ],
+          "url": "Owen Lars"
+        },
+        "homeworld_swapi_id": "1"
+      },
+      {
+        "swapi_id": "7",
+        "properties": {
+          "created": "2026-10-11T13:51:57.981Z",
+          "edited": "2026-10-11T13:51:57.981Z",
+          "name": "Beru Whitesun lars",
+          "gender": "female",
+          "skin_color": "light",
+          "hair_color": "brown",
+          "height": "165",
+          "eye_color": "blue",
+          "mass": "75",
+          "homeworld": "Tatooine",
+          "birth_year": "47BBY",
+          "vehicles": [],
+          "starships": [],
+          "films": [
+            "A New Hope",
+            "Attack of the Clones",
+            "Revenge of the Sith"
+          ],
+          "url": "Beru Whitesun lars"
+        },
+        "homeworld_swapi_id": "1"
+      },
+      {
+        "swapi_id": "8",
+        "properties": {
+          "created": "2026-10-11T13:51:57.981Z",
+          "edited": "2026-10-11T13:51:57.981Z",
+          "name": "R5-D4",
+          "gender": "n/a",
+          "skin_color": "white, red",
+          "hair_color": "n/a",
+          "height": "97",
+          "eye_color": "red",
+          "mass": "32",
+          "homeworld": "Tatooine",
+          "birth_year": "unknown",
+          "vehicles": [],
+          "starships": [],
+          "films": [
+            "A New Hope"
+          ],
+          "url": "R5-D4"
+        },
+        "homeworld_swapi_id": "1"
+      },
+      {
+        "swapi_id": "9",
+        "properties": {
+          "created": "2026-10-11T13:51:57.981Z",
+          "edited": "2026-10-11T13:51:57.981Z",
+          "name": "Biggs Darklighter",
+          "gender": "male",
+          "skin_color": "light",
+          "hair_color": "black",
+          "height": "183",
+          "eye_color": "brown",
+          "mass": "84",
+          "homeworld": "Tatooine",
+          "birth_year": "24BBY",
+          "vehicles": [],
+          "starships": [
+            "X-wing"
+          ],
+          "films": [
+            "A New Hope"
+          ],
+          "url": "Biggs Darklighter"
+        },
+        "homeworld_swapi_id": "1"
+      },
+      {
+        "swapi_id": "10",
+        "properties": {
+          "created": "2026-10-11T13:51:57.981Z",
+          "edited": "2026-10-11T13:51:57.981Z",
+          "name": "Obi-Wan Kenobi",
+          "gender": "male",
+          "skin_color": "fair",
+          "hair_color": "auburn, white",
+          "height": "182",
+          "eye_color": "blue-gray",
+          "mass": "77",
+          "homeworld": "Stewjon",
+          "birth_year": "57BBY",
+          "vehicles": [
+            "Tribubble bongo"
+          ],
+          "starships": [
+            "Jedi starfighter",
+            "Trade Federation cruiser",
+            "Naboo star skiff",
+            "Jedi Interceptor",
+            "Belbullab-22 starfighter"
+          ],
+          "films": [
+            "A New Hope",
+            "The Empire Strikes Back",
+            "Return of the Jedi",
+            "The Phantom Menace",
+            "Attack of the Clones",
+            "Revenge of the Sith"
+          ],
+          "url": "Obi-Wan Kenobi"
+        },
+        "homeworld_swapi_id": "20"
+      }
+    ],
+    "planets": [
+      {
+        "swapi_id": "1",
+        "properties": {
+          "created": "2026-10-11T13:51:57.984Z",
+          "edited": "2026-10-11T13:51:57.984Z",
+          "climate": "arid",
+          "surface_water": "1",
+          "name": "Tatooine",
+          "diameter": "10465",
+          "rotation_period": "23",
+          "terrain": "desert",
+          "gravity": "1 standard",
+          "orbital_period": "304",
+          "population": "200000",
+          "url": "Tatooine"
+        }
+      },
+      {
+        "swapi_id": "2",
+        "properties": {
+          "created": "2026-10-11T13:51:57.984Z",
+          "edited": "2026-10-11T13:51:57.984Z",
+          "climate": "temperate",
+          "surface_water": "40",
+          "name": "Alderaan",
+          "diameter": "12500",
+          "rotation_period": "24",
+          "terrain": "grasslands, mountains",
+          "gravity": "1 standard",
+          "orbital_period": "364",
+          "population": "2000000000",
+          "url": "Alderaan"
+        }
+      },
+      {
+        "swapi_id": "3",
+        "properties": {
+          "created": "2026-10-11T13:51:57.984Z",
+          "edited": "2026-10-11T13:51:57.984Z",
+          "climate": "temperate, tropical",
+          "surface_water": "8",
+          "name": "Yavin IV",
+          "diameter": "10200",
+          "rotation_period": "24",
+          "terrain": "jungle, rainforests",
+          "gravity": "1 standard",
+          "orbital_period": "4818",
+          "population": "1000",
+          "url": "Yavin IV"
+        }
+      },
+      {
+        "swapi_id": "4",
+        "properties": {
+          "created": "2026-10-11T13:51:57.984Z",
+          "edited": "2026-10-11T13:51:57.984Z",
+          "climate": "frozen",
+          "surface_water": "100",
+          "name": "Hoth",
+          "diameter": "7200",
+          "rotation_period": "23",
+          "terrain": "tundra, ice caves, mountain ranges",
+          "gravity": "1.1 standard",
+          "orbital_period": "549",
+          "population": "unknown",
+          "url": "Hoth"
+        }
+      },
+      {
+        "swapi_id": "5",
+        "properties": {
+          "created": "2026-10-11T13:51:57.984Z",
+          "edited": "2026-10-11T13:51:57.984Z",
+          "climate": "murky",
+          "surface_water": "8",
+          "name": "Dagobah",
+          "diameter": "8900",
+          "rotation_period": "23",
+          "terrain": "swamp, jungles",
+          "gravity": "N/A",
+          "orbital_period": "341",
+          "population": "unknown",
+          "url": "Dagobah"
+        }
+      },
+      {
+        "swapi_id": "6",
+        "properties": {
+          "created": "2026-10-11T13:51:57.984Z",
+          "edited": "2026-10-11T13:51:57.984Z",
+          "climate": "temperate",
+          "surface_water": "0",
+          "name": "Bespin",
+          "diameter": "118000",
+          "rotation_period": "12",
+          "terrain": "gas giant",
+          "gravity": "1.5 (surface), 1 standard (Cloud City)",
+          "orbital_period": "5110",
+          "population": "6000000",
+          "url": "Bespin"
+        }
+      },
+      {
+        "swapi_id": "7",
+        "properties": {
+          "created": "2026-10-11T13:51:57.984Z",
+          "edited": "2026-10-11T13:51:57.984Z",
+          "climate": "temperate",
+          "surface_water": "8",
+          "name": "Endor",
+          "diameter": "4900",
+          "rotation_period": "18",
+          "terrain": "forests, mountains, lakes",
+          "gravity": "0.85 standard",
+          "orbital_period": "402",
+          "population": "30000000",
+          "url": "Endor"
+        }
+      },
+      {
+        "swapi_id": "8",
+        "properties": {
+          "created": "2026-10-11T13:51:57.984Z",
+          "edited": "2026-10-11T13:51:57.984Z",
+          "climate": "temperate",
+          "surface_water": "12",
+          "name": "Naboo",
+          "diameter": "12120",
+          "rotation_period": "26",
+          "terrain": "grassy hills, swamps, forests, mountains",
+          "gravity": "1 standard",
+          "orbital_period": "312",
+          "population": "4500000000",
+          "url": "Naboo"
+        }
+      },
+      {
+        "swapi_id": "9",
+        "properties": {
+          "created": "2026-10-11T13:51:57.984Z",
+          "edited": "2026-10-11T13:51:57.984Z",
+          "climate": "temperate",
+          "surface_water": "unknown",
+          "name": "Coruscant",
+          "diameter": "12240",
+          "rotation_period": "24",
+          "terrain": "cityscape, mountains",
+          "gravity": "1 standard",
+          "orbital_period": "368",
+          "population": "1000000000000",
+          "url": "Coruscant"
+        }
+      },
+      {
+        "swapi_id": "10",
+        "properties": {
+          "created": "2026-10-11T13:51:57.984Z",
+          "edited": "2026-10-11T13:51:57.984Z",
+          "climate": "temperate",
+          "surface_water": "100",
+          "name": "Kamino",
+          "diameter": "19720",
+          "rotation_period": "27",
+          "terrain": "ocean",
+          "gravity": "1 standard",
+          "orbital_period": "463",
+          "population": "1000000000",
+          "url": "Kamino"
+        }
+      }
+    ],
+    "vehicles": [
+      {
+        "swapi_id": "4",
+        "properties": {
+          "created": "2026-10-11T13:51:57.987Z",
+          "edited": "2026-10-11T13:51:57.987Z",
+          "consumables": "2 months",
+          "name": "Sand Crawler",
+          "cargo_capacity": "50000",
+          "passengers": "30",
+          "max_atmosphering_speed": "30",
+          "crew": "46",
+          "length": "36.8 ",
+          "model": "Digger Crawler",
+          "cost_in_credits": "150000",
+          "manufacturer": "Corellia Mining Corporation",
+          "vehicle_class": "wheeled",
+          "pilots": [],
+          "films": [
+            "A New Hope",
+            "Attack of the Clones"
+          ],
+          "url": "Sand Crawler"
+        }
+      },
+      {
+        "swapi_id": "7",
+        "properties": {
+          "created": "2026-10-11T13:51:57.987Z",
+          "edited": "2026-10-11T13:51:57.987Z",
+          "consumables": "unknown",
+          "name": "X-34 landspeeder",
+          "cargo_capacity": "5",
+          "passengers": "1",
+          "max_atmosphering_speed": "250",
+          "crew": "1",
+          "length": "3.4 ",
+          "model": "X-34 landspeeder",
+          "cost_in_credits": "10550",
+          "manufacturer": "SoroSuub Corporation",
+          "vehicle_class": "repulsorcraft",
+          "pilots": [],
+          "films": [
+            "A New Hope"
+          ],
+          "url": "X-34 landspeeder"
+        }
+      },
+      {
+        "swapi_id": "6",
+        "properties": {
+          "created": "2026-10-11T13:51:57.987Z",
+          "edited": "2026-10-11T13:51:57.987Z",
+          "consumables": "0",
+          "name": "T-16 skyhopper",
+          "cargo_capacity": "50",
+          "passengers": "1",
+          "max_atmosphering_speed": "1200",
+          "crew": "1",
+          "length": "10.4 ",
+          "model": "T-16 skyhopper",
+          "cost_in_credits": "14500",
+          "manufacturer": "Incom Corporation",
+          "vehicle_class": "repulsorcraft",
+          "pilots": [],
+          "films": [
+            "A New Hope"
+          ],
+          "url": "T-16 skyhopper"
+        }
+      },
+      {
+        "swapi_id": "8",
+        "properties": {
+          "created": "2026-10-11T13:51:57.987Z",
+          "edited": "2026-10-11T13:51:57.987Z",
+          "consumables": "2 days",
+          "name": "TIE/LN starfighter",
+          "cargo_capacity": "65",
+          "passengers": "0",
+          "max_atmosphering_speed": "1200",
+          "crew": "1",
+          "length": "6.4",
+          "model": "Twin Ion Engine/Ln Starfighter",
+          "cost_in_credits": "unknown",
+          "manufacturer": "Sienar Fleet Systems",
+          "vehicle_class": "starfighter",
+          "pilots": [],
+          "films": [
+            "A New Hope",
+            "The Empire Strikes Back",
+            "Return of the Jedi"
+          ],
+          "url": "TIE/LN starfighter"
+        }
+      },
+      {
+        "swapi_id": "14",
+        "properties": {
+          "created": "2026-10-11T13:51:57.987Z",
+          "edited": "2026-10-11T13:51:57.987Z",
+          "consumables": "none",
+          "name": "Snowspeeder",
+          "cargo_capacity": "10",
+          "passengers": "0",
+          "max_atmosphering_speed": "650",
+          "crew": "2",
+          "length": "4.5",
+          "model": "t-47 airspeeder",
+          "cost_in_credits": "unknown",
+          "manufacturer": "Incom corporation",
+          "vehicle_class": "airspeeder",
+          "pilots": [
+            "Luke Skywalker",
+            "Wedge Antilles"
+          ],
+          "films": [
+            "The Empire Strikes Back"
+          ],
+          "url": "Snowspeeder"
+        }
+      },
+      {
+        "swapi_id": "18",
+        "properties": {
+          "created": "2026-10-11T13:51:57.987Z",
+          "edited": "2026-10-11T13:51:57.987Z",
+          "consumables": "unknown",
+          "name": "AT-AT",
+          "cargo_capacity": "1000",
+          "passengers": "40",
+          "max_atmosphering_speed": "60",
+          "crew": "5",
+          "length": "20",
+          "model": "All Terrain Armored Transport",
+          "cost_in_credits": "unknown",
+          "manufacturer": "Kuat Drive Yards, Imperial Department of Military Research",
+          "vehicle_class": "assault walker",
+          "pilots": [],
+          "films": [
+            "The Empire Strikes Back",
+            "Return of the Jedi"
+          ],
+          "url": "AT-AT"
+        }
+      },
+      {
+        "swapi_id": "16",
+        "properties": {
+          "created": "2026-10-11T13:51:57.987Z",
+          "edited": "2026-10-11T13:51:57.987Z",
+          "consumables": "2 days",
+          "name": "TIE bomber",
+          "cargo_capacity": "none",
+          "passengers": "0",
+          "max_atmosphering_speed": "850",
+          "crew": "1",
+          "length": "7.8",
+          "model": "TIE/sa bomber",
+          "cost_in_credits": "unknown",
+          "manufacturer": "Sienar Fleet Systems",
+          "vehicle_class": "space/planetary bomber",
+          "pilots": [],
+          "films": [
+            "The Empire Strikes Back",
+            "Return of the Jedi"
+          ],
+          "url": "TIE bomber"
+        }
+      },
+      {
+        "swapi_id": "19",
+        "properties": {
+          "created": "2026-10-11T13:51:57.987Z",
+          "edited": "2026-10-11T13:51:57.987Z",
+          "consumables": "none",
+          "name": "AT-ST",
+          "cargo_capacity": "200",
+          "passengers": "0",
+          "max_atmosphering_speed": "90",
+          "crew": "2",
+          "length": "2",
+          "model": "All Terrain Scout Transport",
+          "cost_in_credits": "unknown",
+          "manufacturer": "Kuat Drive Yards, Imperial Department of Military Research",
+          "vehicle_class": "walker",
+          "pilots": [
+            "Chewbacca"
+          ],
+          "films": [
+            "The Empire Strikes Back",
+            "Return of the Jedi"
+          ],
+          "url": "AT-ST"
+        }
+      },
+      {
+        "swapi_id": "20",
+        "properties": {
+          "created": "2026-10-11T13:51:57.987Z",
+          "edited": "2026-10-11T13:51:57.987Z",
+          "consumables": "1 day",
+          "name": "Storm IV Twin-Pod cloud car",
+          "cargo_capacity": "10",
+          "passengers": "0",
+          "max_atmosphering_speed": "1500",
+          "crew": "2",
+          "length": "7",
+          "model": "Storm IV Twin-Pod",
+          "cost_in_credits": "75000",
+          "manufacturer": "Bespin Motors",
+          "vehicle_class": "repulsorcraft",
+          "pilots": [],
+          "films": [
+            "The Empire Strikes Back"
+          ],
+          "url": "Storm IV Twin-Pod cloud car"
+        }
+      },
+      {
+        "swapi_id": "24",
+        "properties": {
+          "created": "2026-10-11T13:51:57.987Z",
+          "edited": "2026-10-11T13:51:57.987Z",
+          "consumables": "Live food tanks",
+          "name": "Sail barge",
+          "cargo_capacity": "2000000",
+          "passengers": "500",
+          "max_atmosphering_speed": "100",
+          "crew": "26",
+          "length": "30",
+          "model": "Modified Luxury Sail Barge",
+          "cost_in_credits": "285000",
+          "manufacturer": "Ubrikkian Industries Custom Vehicle Division",
+          "vehicle_class": "sail barge",
+          "pilots": [],
+          "films": [
+            "Return of the Jedi"
+          ],
+          "url": "Sail barge"
+        }
+      }
+    ]
+  }
+}
