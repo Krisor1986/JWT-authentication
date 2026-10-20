@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import storeReducer, { initialStore } from "../store";
 
 const StoreContext = createContext(null);
-export const API_URL = `${(import.meta.env.VITE_BACKEND_URL || "http://127.0.0.1:3001").replace(/\/$/, "")}/api`;
+const backendUrl = (import.meta.env.VITE_BACKEND_URL || "").trim().replace(/\/+$/, "");
+export const API_URL = backendUrl.endsWith("/api") ? backendUrl : `${backendUrl}/api`;
 const flattenFavorites = data => Object.entries(data).flatMap(([category, records]) => records.map(record => ({ category, uid: String(record.id), name: record.name })));
 
 export function StoreProvider({ children }) {

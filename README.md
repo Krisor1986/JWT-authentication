@@ -37,7 +37,11 @@ Start React in a second terminal:
 ```bash
 npm run start
 ```
-Open [the frontend](http://localhost:3000). Flask runs at `http://127.0.0.1:3001`; `VITE_BACKEND_URL` points there. The seed command is repeatable and imports the same 10 characters, 10 planets and 10 vehicles used in the previous API exercise. Create your own account through `/signup`.
+Open [the frontend](http://localhost:3000). Flask runs at `http://127.0.0.1:3001`. Keep `VITE_BACKEND_URL` empty: React requests `/api` on the current site, and Vite forwards those requests to `BACKEND_URL` (default: `http://127.0.0.1:3001`). The browser never needs to connect to its own localhost to reach a remote backend.
+
+When updating an existing `.env`, remove the old `VITE_BACKEND_URL=http://127.0.0.1:3001` value, add `BACKEND_URL=http://127.0.0.1:3001`, and restart Vite. In Codespaces, open the forwarded port **3000**; only the frontend port needs browser access. The internal backend address remains the same.
+
+After `npm run build`, Flask serves both React and `/api` on its own URL with no frontend URL change. Only if you deploy the frontend and backend separately, set `VITE_BACKEND_URL` to the backend's public HTTPS URL before building (with or without `/api`), and set `FRONTEND_URL` to the frontend's origin for CORS. Vite embeds `VITE_*` values when starting/building, so changing Flask's environment alone does not update an existing build. The seed command is repeatable and imports the same 10 characters, 10 planets and 10 vehicles used in the previous API exercise. Create your own account through `/signup`.
 
 ## API
 
@@ -60,7 +64,7 @@ pipenv run test
 npm run lint
 npm run build
 ```
-Tests exercise authentication, password hashes, invalid and expired tokens, migrations, repeatable imports, and favorites isolation. Integration tests start a real HTTP server with an isolated SQLite database; they do not mock API responses. The running frontend/backend flow was also checked in a browser. All 30 external image URLs returned image responses during verification; external availability can change.
+Tests exercise authentication, password hashes, invalid and expired tokens, migrations, repeatable imports, and favorites isolation. Integration tests start real HTTP servers with an isolated SQLite database; they do not mock API responses. Run `npm install` before the tests: the connection regression test starts Vite on a temporary port and verifies registration, login and private access through its `/api` proxy. Run `npm run build` before testing to also check the Flask-served frontend. The running frontend/backend flow was also checked in a browser. All 30 external image URLs returned image responses during verification; external availability can change.
 
 ## Sources and scope
 
