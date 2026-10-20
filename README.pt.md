@@ -37,7 +37,11 @@ React em outro terminal:
 ```bash
 npm run start
 ```
-Abra [o frontend](http://localhost:3000). O Flask roda em `http://127.0.0.1:3001`, configurado em `VITE_BACKEND_URL`. O seed pode ser repetido e importa os mesmos 10 personagens, 10 planetas e 10 veículos do exercício anterior. Crie sua conta em `/signup`.
+Abra [o frontend](http://localhost:3000). O Flask roda em `http://127.0.0.1:3001`. Deixe `VITE_BACKEND_URL` vazio: o React solicita `/api` no endereço do site atual, e o Vite encaminha as requisições para `BACKEND_URL` (padrão: `http://127.0.0.1:3001`). O navegador não precisa acessar seu próprio localhost para alcançar um backend remoto.
+
+Ao atualizar um `.env` existente, remova o valor antigo `VITE_BACKEND_URL=http://127.0.0.1:3001`, adicione `BACKEND_URL=http://127.0.0.1:3001` e reinicie o Vite. No Codespaces, abra a porta encaminhada **3000**; apenas a porta do frontend precisa de acesso pelo navegador. O endereço interno do backend continua igual.
+
+Após `npm run build`, o Flask serve o React e `/api` no próprio endereço, sem alterar a URL do frontend. Somente se publicar frontend e backend separadamente, configure `VITE_BACKEND_URL` com a URL HTTPS pública do backend antes de gerar o build (com ou sem `/api`) e `FRONTEND_URL` com a origem do frontend para o CORS. O Vite incorpora os valores `VITE_*` ao iniciar/compilar; alterar apenas o ambiente do Flask não atualiza um build existente. O seed pode ser repetido e importa os mesmos 10 personagens, 10 planetas e 10 veículos do exercício anterior. Crie sua conta em `/signup`.
 
 ## API
 
@@ -60,7 +64,7 @@ pipenv run test
 npm run lint
 npm run build
 ```
-Os testes verificam autenticação, hashes, tokens inválidos e expirados, migrações, importação repetível e isolamento de favoritos. A integração usa um servidor HTTP real e SQLite isolado, sem simular respostas. O fluxo com frontend e backend também foi conferido no navegador. As 30 URLs externas de imagens responderam com imagens durante a verificação; sua disponibilidade pode mudar.
+Os testes verificam autenticação, hashes, tokens inválidos e expirados, migrações, importação repetível e isolamento de favoritos. A integração usa servidores HTTP reais e SQLite isolado, sem simular respostas. Execute `npm install` antes dos testes: o teste de regressão da conexão inicia o Vite em uma porta temporária e verifica cadastro, login e acesso privado pelo proxy `/api`. Execute `npm run build` antes dos testes para conferir também o frontend servido pelo Flask. O fluxo com frontend e backend também foi conferido no navegador. As 30 URLs externas de imagens responderam com imagens durante a verificação; sua disponibilidade pode mudar.
 
 ## Fontes e escopo
 
